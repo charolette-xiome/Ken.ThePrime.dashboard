@@ -1,317 +1,130 @@
-/* =========================================================
-   KEN CASE COMPETITION DASHBOARD
-   INTERACTIVE SCRIPT
-   ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // =========================================================
+    // 1. FILTER FUNCTIONALITY
+    // =========================================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const chartCards = document.querySelectorAll('.chart-card');
 
-document.addEventListener("DOMContentLoaded", function () {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons and add to the clicked one
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-    /* =========================================================
-       ELEMENTS
-    ========================================================= */
-
-    const chartGrid = document.getElementById("chart-grid");
-
-    const zoomInButton = document.getElementById("zoom-in");
-    const zoomOutButton = document.getElementById("zoom-out");
-    const resetButton = document.getElementById("reset-view");
-
-    const zoomLevel = document.getElementById("zoom-level");
-
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
-
-    const chartCards =
-        document.querySelectorAll(".chart-card");
-
-
-    /* =========================================================
-       LIGHTBOX
-    ========================================================= */
-
-    const lightbox =
-        document.getElementById("lightbox");
-
-    const lightboxImg =
-        document.getElementById("lightbox-img");
-
-    const lightboxCaption =
-        document.getElementById("lightbox-caption");
-
-    const lightboxClose =
-        document.querySelector(".lightbox-close");
-
-
-    /* =========================================================
-       ZOOM SETTINGS
-    ========================================================= */
-
-    let currentZoom = 1;
-
-    const zoomStep = 0.1;
-    const minimumZoom = 0.6;
-    const maximumZoom = 1.4;
-
-
-    function updateZoom() {
-
-        chartGrid.style.transform =
-            `scale(${currentZoom})`;
-
-        zoomLevel.textContent =
-            `${Math.round(currentZoom * 100)}%`;
-    }
-
-
-    zoomInButton.addEventListener("click", function () {
-
-        if (currentZoom < maximumZoom) {
-
-            currentZoom += zoomStep;
-
-            currentZoom =
-                Math.round(currentZoom * 10) / 10;
-
-            updateZoom();
-        }
-
-    });
-
-
-    zoomOutButton.addEventListener("click", function () {
-
-        if (currentZoom > minimumZoom) {
-
-            currentZoom -= zoomStep;
-
-            currentZoom =
-                Math.round(currentZoom * 10) / 10;
-
-            updateZoom();
-        }
-
-    });
-
-
-    resetButton.addEventListener("click", function () {
-
-        currentZoom = 1;
-
-        updateZoom();
-
-    });
-
-
-
-    /* =========================================================
-       CATEGORY FILTERING
-    ========================================================= */
-
-    filterButtons.forEach(button => {
-
-        button.addEventListener("click", function () {
-
-            filterButtons.forEach(btn => {
-                btn.classList.remove("active");
-            });
-
-            this.classList.add("active");
-
-            const filterValue =
-                this.getAttribute("data-filter");
-
+            const filterValue = btn.getAttribute('data-filter');
 
             chartCards.forEach(card => {
-
-                const cardCategory =
-                    card.getAttribute("data-category");
-
-
-                if (
-                    filterValue === "all" ||
-                    cardCategory === filterValue
-                ) {
-
-                    card.classList.remove("is-hidden");
-
+                const category = card.getAttribute('data-category');
+                
+                if (filterValue === 'all' || category === filterValue) {
+                    card.classList.remove('is-hidden');
                 } else {
-
-                    card.classList.add("is-hidden");
-
+                    card.classList.add('is-hidden');
                 }
-
             });
-
         });
-
     });
 
+    // =========================================================
+    // 2. ZOOM FUNCTIONALITY
+    // =========================================================
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+    const resetZoomBtn = document.getElementById('reset-view');
+    const zoomLevelText = document.getElementById('zoom-level');
+    const chartGrid = document.getElementById('chart-grid');
 
+    let currentZoom = 100;
+    const zoomStep = 10;
+    const maxZoom = 150;
+    const minZoom = 50;
 
-    /* =========================================================
-       LIGHTBOX
-    ========================================================= */
-
-    chartCards.forEach(card => {
-
-        card.addEventListener("click", function () {
-
-            const img =
-                this.querySelector(".chart-image");
-
-            const title =
-                this.querySelector(".chart-title")
-                    .textContent
-                    .trim();
-
-
-            if (!img) {
-                return;
-            }
-
-
-            /*
-             * Do not open the lightbox if the image
-             * itself failed to load.
-             */
-
-            if (!img.complete || img.naturalWidth === 0) {
-
-                console.warn(
-                    "Image could not be loaded:",
-                    img.src
-                );
-
-                return;
-            }
-
-
-            lightboxImg.src = img.src;
-
-            lightboxImg.alt =
-                img.alt || title;
-
-            lightboxCaption.textContent =
-                title;
-
-            lightbox.classList.add("active");
-
-            document.body.style.overflow = "hidden";
-
-        });
-
-    });
-
-
-
-    /* =========================================================
-       CLOSE LIGHTBOX
-    ========================================================= */
-
-    function closeLightbox() {
-
-        lightbox.classList.remove("active");
-
-        lightboxImg.src = "";
-
-        document.body.style.overflow = "";
-
+    function applyZoom() {
+        chartGrid.style.transform = `scale(${currentZoom / 100})`;
+        zoomLevelText.textContent = `${currentZoom}%`;
+        
+        // Adjust grid margin based on scale to prevent overlap/cutoff
+        if (currentZoom !== 100) {
+            chartGrid.style.marginBottom = `${((currentZoom - 100) / 100) * chartGrid.scrollHeight}px`;
+        } else {
+            chartGrid.style.marginBottom = '0';
+        }
     }
 
-
-    lightboxClose.addEventListener(
-        "click",
-        closeLightbox
-    );
-
-
-    lightbox.addEventListener(
-        "click",
-        function (event) {
-
-            if (event.target === lightbox) {
-
-                closeLightbox();
-
-            }
-
+    zoomInBtn.addEventListener('click', () => {
+        if (currentZoom < maxZoom) {
+            currentZoom += zoomStep;
+            applyZoom();
         }
-    );
-
-
-
-    /* =========================================================
-       ESCAPE KEY
-    ========================================================= */
-
-    document.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Escape" &&
-                lightbox.classList.contains("active")
-            ) {
-
-                closeLightbox();
-
-            }
-
-        }
-    );
-
-
-
-    /* =========================================================
-       IMAGE DEBUGGING
-    ========================================================= */
-
-    const images =
-        document.querySelectorAll(".chart-image");
-
-
-    images.forEach(image => {
-
-        image.addEventListener(
-            "error",
-            function () {
-
-                console.error(
-                    "IMAGE FAILED TO LOAD:",
-                    image.getAttribute("src")
-                );
-
-                /*
-                 * Keep the broken image visible in DevTools
-                 * instead of replacing it with a fake
-                 * "Visualization unavailable" message.
-                 */
-
-                image.classList.add("image-error");
-
-            }
-        );
-
-
-        image.addEventListener(
-            "load",
-            function () {
-
-                console.log(
-                    "IMAGE LOADED:",
-                    image.getAttribute("src")
-                );
-
-            }
-        );
-
     });
 
+    zoomOutBtn.addEventListener('click', () => {
+        if (currentZoom > minZoom) {
+            currentZoom -= zoomStep;
+            applyZoom();
+        }
+    });
 
+    resetZoomBtn.addEventListener('click', () => {
+        currentZoom = 100;
+        applyZoom();
+    });
 
-    /* =========================================================
-       INITIALIZE
-    ========================================================= */
+    // =========================================================
+    // 3. LIGHTBOX FUNCTIONALITY
+    // =========================================================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
 
-    updateZoom();
+    chartCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const img = card.querySelector('.chart-image');
+            const title = card.querySelector('.chart-title');
 
+            if (img && img.src) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = title ? title.textContent.trim() : '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore background scrolling
+        // Delay clearing src to allow fade-out animation to complete
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Close when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
+    // =========================================================
+    // 4. BROKEN IMAGE FALLBACK (Optional but helpful)
+    // =========================================================
+    const allImages = document.querySelectorAll('.chart-image');
+    allImages.forEach(img => {
+        img.addEventListener('error', function() {
+            this.classList.add('image-error');
+            this.alt = "Image failed to load";
+        });
+    });
 });
