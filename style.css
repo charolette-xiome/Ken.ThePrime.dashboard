@@ -5,41 +5,6 @@
 /* =========================================================
    RESET
    ========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --bg-main: #0b0d12;
-    --surface-card: #141822;
-    --surface-card-hover: #1c2230;
-    --surface-control: #1a1f2c;
-    
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
-    
-    --border-color: #262c3a;
-    To make the `.chart-card` container wrap **exactly** to the size of the title and image without any extra empty space or stretching, you need to change a few things:
-
-1. Add `align-items: start;` to your `.bento-grid` so grid items stop stretching to match the tallest card in a row.
-2. Remove `height: 100%;` from `.chart-card` and replace it with `height: fit-content;`.
-3. Remove `flex: 1;` and `min-height: 260px;` from `.chart-image-wrapper` so it stops forcing extra vertical space.
-
-Here is the fully rewritten, corrected CSS:
-
-```css
-/* =========================================================
-   KEN CASE COMPETITION DASHBOARD
-   ========================================================= */
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -73,7 +38,6 @@ Here is the fully rewritten, corrected CSS:
 /* =========================================================
    BODY
    ========================================================= */
-
 body {
     font-family: var(--font-body);
     background-color: var(--bg-main);
@@ -86,7 +50,6 @@ body {
 /* =========================================================
    DASHBOARD
    ========================================================= */
-
 .dashboard {
     width: min(1600px, 95%);
     margin: 0 auto;
@@ -96,7 +59,6 @@ body {
 /* =========================================================
    HEADER
    ========================================================= */
-
 .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -150,7 +112,6 @@ body {
 /* =========================================================
    HEADER STATS
    ========================================================= */
-
 .header-right {
     display: flex;
     gap: 14px;
@@ -195,7 +156,6 @@ body {
 /* =========================================================
    INTRO
    ========================================================= */
-
 .intro-section {
     max-width: 900px;
     padding: 48px 0 36px;
@@ -230,7 +190,6 @@ body {
 /* =========================================================
    CONTROLS
    ========================================================= */
-
 .dashboard-controls {
     display: flex;
     justify-content: space-between;
@@ -319,13 +278,12 @@ body {
 /* =========================================================
    BENTO GRID & SPANS
    ========================================================= */
-
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    align-items: start; /* Prevents grid items from stretching to the tallest item in the row */
-    transform-origin: top center;
+    align-items: start;
+    transform-origin: top left; /* Changed from top center to prevent overflow issues when zoomed */
     transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -342,9 +300,8 @@ body {
 }
 
 /* =========================================================
-   CHART CARDS (FIXED SECTION)
+   CHART CARDS
    ========================================================= */
-
 .chart-card {
     background: var(--surface-card);
     border: 1px solid var(--border-color);
@@ -354,7 +311,7 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    height: fit-content; /* Hugs the content tightly instead of stretching */
+    height: fit-content;
 }
 
 .chart-card:hover {
@@ -396,14 +353,13 @@ body {
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.15);
-    /* Removed flex: 1 and min-height so it wraps exactly around the image height */
 }
 
 .chart-image {
     width: 100%;
-    height: auto; /* Ensures image maintains aspect ratio naturally */
-    max-height: 320px; 
-    object-fit: contain; 
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
     border-radius: 8px;
 }
 
@@ -416,7 +372,6 @@ body {
 /* =========================================================
    FOOTER
    ========================================================= */
-
 .dashboard-footer {
     display: flex;
     justify-content: space-between;
@@ -432,7 +387,6 @@ body {
 /* =========================================================
    LIGHTBOX
    ========================================================= */
-
 .lightbox {
     position: fixed;
     top: 0;
@@ -491,7 +445,6 @@ body {
 /* =========================================================
    RESPONSIVE QUERIES
    ========================================================= */
-
 @media (max-width: 1200px) {
     .bento-grid {
         grid-template-columns: repeat(3, 1fr);
