@@ -4,290 +4,1184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Sticking to the Goal — behavioral research dashboard for the Ken Case Competition 2026.">
+
+    <meta name="theme-color" content="#070b12">
+
     <title>Sticking to the Goal — Ken Case Competition 2026</title>
-    <!-- Google Fonts -->
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
-    <!-- Stylesheet -->
+
+    <!-- Styles -->
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-    <main class="dashboard">
-        <!-- HEADER -->
-        <header class="dashboard-header">
-            <div class="header-left">
-                <div class="eyebrow-tag">
-                    <span class="pulse-dot"></span>
-                    KEN CASE COMPETITION 2026
-                </div>
-                <h1>
-                    Sticking to<br>
-                    <span class="gradient-text">the Goal</span>
-                </h1>
-                <p class="subtitle">
-                    User Research &amp; Behavioral Insights on Goal Execution
-                </p>
-            </div>
-            <div class="header-right">
-                <div class="research-stat">
-                    <span class="stat-number">73</span>
-                    <span class="stat-label">Total Responses</span>
-                </div>
-                <div class="research-stat">
-                    <span class="stat-number">70</span>
-                    <span class="stat-label">Aged 18–24</span>
-                </div>
-                <div class="research-stat highlight">
-                    <span class="stat-number">17</span>
-                    <span class="stat-label">Data Visualizations</span>
-                </div>
-            </div>
-        </header>
+    <!-- =====================================================
+         BACKGROUND
+    ====================================================== -->
 
-        <!-- INTRO -->
-        <section class="intro-section">
-            <div class="intro-badge">THE CORE QUESTION</div>
-            <h2>
-                People know what they <span>should do.</span><br>
-                Why don't they follow through?
-            </h2>
-            <p>
-                An empirical investigation into goal-setting dynamics,
-                procrastination triggers, accountability mechanisms,
-                and loss-aversion incentives across demographic cohorts.
-            </p>
-        </section>
-
-        <!-- FILTERS + CONTROLS -->
-        <section class="dashboard-controls">
-            <div class="filter-group">
-                <button class="filter-btn active" data-filter="all">All Visualizations</button>
-                <button class="filter-btn" data-filter="psychology">Goal Psychology</button>
-                <button class="filter-btn" data-filter="obstacles">Obstacles &amp; Failures</button>
-                <button class="filter-btn" data-filter="accountability">Accountability</button>
-                <button class="filter-btn" data-filter="demographics">Demographics</button>
-            </div>
-            <div class="control-right">
-                <button id="zoom-out" class="control-button" aria-label="Zoom out">−</button>
-                <span id="zoom-level">100%</span>
-                <button id="zoom-in" class="control-button" aria-label="Zoom in">+</button>
-                <button id="reset-view" class="reset-button">Reset</button>
-            </div>
-        </section>
-
-        <!-- CHART GRID -->
-        <section id="chart-grid" class="bento-grid">
-            <!-- CHART 01 -->
-            <article class="chart-card span-col-2" data-category="psychology">
-                <div class="card-header">
-                    <span class="card-category">Psychology</span>
-                    <h3 class="chart-title">Goal Domain Breakdown</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg1.jpg" alt="Goal Domain Breakdown" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 02 -->
-            <article class="chart-card" data-category="obstacles">
-                <div class="card-header">
-                    <span class="card-category">Obstacles</span>
-                    <h3 class="chart-title">Point of Abandonment</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg2.jpg" alt="Point of Abandonment" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 03 -->
-            <article class="chart-card" data-category="psychology">
-                <div class="card-header">
-                    <span class="card-category">Psychology</span>
-                    <h3 class="chart-title">Goal Importance Rating</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg3.jpg" alt="Goal Importance Rating" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 04 -->
-            <article class="chart-card" data-category="accountability">
-                <div class="card-header">
-                    <span class="card-category">Accountability</span>
-                    <h3 class="chart-title">Accountability Support Groups</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg4.jpg" alt="Accountability Support Groups" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 05 -->
-            <article class="chart-card" data-category="accountability">
-                <div class="card-header">
-                    <span class="card-category">Accountability</span>
-                    <h3 class="chart-title">Impact of Social Oversight</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg5.jpg" alt="Impact of Social Oversight" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 06 -->
-            <article class="chart-card" data-category="psychology">
-                <div class="card-header">
-                    <span class="card-category">Psychology</span>
-                    <h3 class="chart-title">Primary Goal Categories</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg6.jpg" alt="Primary Goal Categories" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 07 -->
-            <article class="chart-card" data-category="demographics">
-                <div class="card-header">
-                    <span class="card-category">Demographics</span>
-                    <h3 class="chart-title">Occupation Distribution</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg7.jpg" alt="Occupation Distribution" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 08 -->
-            <article class="chart-card" data-category="demographics">
-                <div class="card-header">
-                    <span class="card-category">Demographics</span>
-                    <h3 class="chart-title">Age Group Spread</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg8.jpg" alt="Age Group Spread" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 09 -->
-            <article class="chart-card" data-category="psychology">
-                <div class="card-header">
-                    <span class="card-category">Psychology</span>
-                    <h3 class="chart-title">Initial Confidence Scale</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg9.jpg" alt="Initial Confidence Scale" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 10 -->
-            <article class="chart-card span-col-2" data-category="psychology">
-                <div class="card-header">
-                    <span class="card-category">Psychology</span>
-                    <h3 class="chart-title">Actual Goal Completion Outcomes</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg10.jpg" alt="Actual Goal Completion Outcomes" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 11 -->
-            <article class="chart-card span-col-2 span-row-2" data-category="obstacles">
-                <div class="card-header">
-                    <span class="card-category">Obstacles</span>
-                    <h3 class="chart-title">Root Causes of Stoppage &amp; Delay</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg11.jpg" alt="Root Causes of Stoppage and Delay" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 12 -->
-            <article class="chart-card span-col-2" data-category="accountability">
-                <div class="card-header">
-                    <span class="card-category">Accountability</span>
-                    <h3 class="chart-title">Commitment &amp; Penalty Preferences</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg12.jpg" alt="Commitment and Penalty Preferences" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 13 -->
-            <article class="chart-card" data-category="accountability">
-                <div class="card-header">
-                    <span class="card-category">Accountability</span>
-                    <h3 class="chart-title">Motivation Preference Structure</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg13.jpg" alt="Motivation Preference Structure" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 14 -->
-            <article class="chart-card span-col-2" data-category="obstacles">
-                <div class="card-header">
-                    <span class="card-category">Obstacles</span>
-                    <h3 class="chart-title">Feared Consequences of Failure</h3>
-                </div>
-                <div class="chart-image-wrapper">
-                    <img src="./kenimg14.jpg" alt="Feared Consequences of Failure" class="chart-image">
-                </div>
-            </article>
-
-            <!-- CHART 15 -->
-            <article class="chart-card span-col-2 infographic-card" data-category="obstacles">
-                <div class="card-header">
-                    <span class="card-category">Obstacles</span>
-                    <h3 class="chart-title">What People Do Instead</h3>
-                </div>
-                <div class="chart-image-wrapper infographic-wrapper">
-                    <img src="./kenimg15.jpg" alt="What People Do Instead — Themes from the Survey"
-                        class="chart-image infographic-image">
-                </div>
-            </article>
-
-            <!-- CHART 16 -->
-            <article class="chart-card span-col-2 infographic-card" data-category="obstacles">
-                <div class="card-header">
-                    <span class="card-category">Obstacles</span>
-                    <h3 class="chart-title">The Escape Routes</h3>
-                </div>
-                <div class="chart-image-wrapper infographic-wrapper">
-                    <img src="./kenimg16.jpg" alt="The Escape Routes" class="chart-image infographic-image">
-                </div>
-            </article>
-
-            <!-- CHART 18 -->
-            <article class="chart-card span-col-2 infographic-card card-18" data-category="obstacles">
-                <div class="card-header">
-                    <span class="card-category">Obstacles</span>
-                    <h3 class="chart-title">What People do instead</h3>
-                </div>
-                <div class="chart-image-wrapper infographic-wrapper wrapper-18">
-                    <img src="./kenimg18.jpg" alt="What People do instead"
-                        class="chart-image infographic-image image-18">
-                </div>
-            </article>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="dashboard-footer">
-            <div>KEN CASE COMPETITION 2026</div>
-            <div>User Behavioral Research · 73 Participants</div>
-        </footer>
-    </main>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" class="lightbox">
-        <button class="lightbox-close" aria-label="Close enlarged visualization">&times;</button>
-        <img class="lightbox-content" id="lightbox-img" alt="Enlarged chart view">
-        <div id="lightbox-caption"></div>
+    <div class="ambient-background" aria-hidden="true">
+        <div class="ambient-orb orb-one"></div>
+        <div class="ambient-orb orb-two"></div>
+        <div class="ambient-orb orb-three"></div>
+        <div class="grid-overlay"></div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- =====================================================
+         SCROLL PROGRESS
+    ====================================================== -->
+
+    <div class="scroll-progress">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- =====================================================
+         SKIP LINK
+    ====================================================== -->
+
+    <a class="skip-link" href="#visualizations">
+        Skip to visualizations
+    </a>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="dashboard">
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+
+                    <span class="pulse-dot"></span>
+
+                    <span>KEN CASE COMPETITION 2026</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Sticking to
+                    <span class="gradient-text">the Goal.</span>
+                </h1>
+
+                <p class="hero-description">
+                    User research &amp; behavioral insights into
+                    why intentions collapse between
+                    <strong>setting a goal</strong> and
+                    <strong>actually following through.</strong>
+                </p>
+
+                <div class="hero-meta">
+                    <span>
+                        <span class="meta-dot"></span>
+                        Empirical research
+                    </span>
+
+                    <span>•</span>
+
+                    <span>73 participants</span>
+
+                    <span>•</span>
+
+                    <span>17 visualizations</span>
+                </div>
+
+            </div>
+
+            <!-- HEADER STATS -->
+
+            <div class="hero-stats">
+
+                <div class="stat-card">
+                    <span class="stat-index">01</span>
+
+                    <span class="stat-number">73</span>
+
+                    <span class="stat-label">
+                        Total responses
+                    </span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-index">02</span>
+
+                    <span class="stat-number">70</span>
+
+                    <span class="stat-label">
+                        Aged 18–24
+                    </span>
+                </div>
+
+                <div class="stat-card stat-card-featured">
+                    <span class="stat-index">03</span>
+
+                    <span class="stat-number">17</span>
+
+                    <span class="stat-label">
+                        Visualizations
+                    </span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CORE QUESTION
+        ================================================== -->
+
+        <section class="core-question reveal">
+
+            <div class="section-kicker">
+                <span>01</span>
+                THE CORE QUESTION
+            </div>
+
+            <div class="question-layout">
+
+                <div>
+                    <h2>
+                        People know what they
+                        <span class="accent-word">should do.</span>
+                        <br>
+                        So why don't they
+                        <em>follow through?</em>
+                    </h2>
+                </div>
+
+                <div class="question-description">
+
+                    <div class="question-line"></div>
+
+                    <p>
+                        An empirical investigation into goal-setting
+                        dynamics, procrastination triggers,
+                        accountability mechanisms, and
+                        loss-aversion incentives across
+                        demographic cohorts.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTROL BAR
+        ================================================== -->
+
+        <section class="control-shell reveal" aria-label="Visualization controls">
+
+            <div class="controls-main">
+
+                <!-- FILTERS -->
+
+                <div class="filter-group" role="group" aria-label="Filter visualizations">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="psychology">
+                        Psychology
+                    </button>
+
+                    <button class="filter-btn" data-filter="obstacles">
+                        Obstacles
+                    </button>
+
+                    <button class="filter-btn" data-filter="accountability">
+                        Accountability
+                    </button>
+
+                    <button class="filter-btn" data-filter="demographics">
+                        Demographics
+                    </button>
+
+                </div>
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M16.5 16.5L21 21"></path>
+                    </svg>
+
+                    <input
+                        id="chart-search"
+                        type="search"
+                        placeholder="Search visualizations..."
+                        autocomplete="off"
+                        aria-label="Search visualizations"
+                    >
+
+                    <kbd>/</kbd>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECONDARY CONTROLS -->
+
+            <div class="controls-secondary">
+
+                <div class="result-count">
+                    <span id="visible-count">17</span>
+                    <span>visualizations</span>
+                </div>
+
+                <div class="control-divider"></div>
+
+                <button
+                    id="theme-toggle"
+                    class="icon-control"
+                    type="button"
+                    aria-label="Toggle theme"
+                    title="Toggle theme"
+                >
+                    <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="M4.93 4.93l1.41 1.41"></path>
+                        <path d="M17.66 17.66l1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="M4.93 19.07l1.41-1.41"></path>
+                        <path d="M17.66 6.34l1.41-1.41"></path>
+                    </svg>
+                </button>
+
+                <button
+                    id="zoom-out"
+                    class="zoom-control"
+                    type="button"
+                    aria-label="Zoom out"
+                >
+                    −
+                </button>
+
+                <span id="zoom-level" class="zoom-level">
+                    100%
+                </span>
+
+                <button
+                    id="zoom-in"
+                    class="zoom-control"
+                    type="button"
+                    aria-label="Zoom in"
+                >
+                    +
+                </button>
+
+                <button
+                    id="reset-view"
+                    class="reset-control"
+                    type="button"
+                >
+                    Reset
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             VISUALIZATION HEADER
+        ================================================== -->
+
+        <div class="visualization-heading reveal">
+
+            <div>
+                <div class="section-kicker">
+                    <span>02</span>
+                    DATA EXPLORER
+                </div>
+
+                <h2>
+                    The evidence,
+                    <span>visualized.</span>
+                </h2>
+            </div>
+
+            <p>
+                Explore the behavioral patterns emerging
+                from the survey.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             CHART GRID
+        ================================================== -->
+
+        <section
+            id="visualizations"
+            class="bento-grid"
+            aria-label="Research visualizations"
+        >
+
+            <!-- 01 -->
+
+            <article
+                class="chart-card span-2 reveal"
+                data-category="psychology"
+                data-title="Goal Domain Breakdown"
+                data-index="1"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+
+                    <span class="card-number">01</span>
+
+                    <span class="card-category psychology">
+                        Psychology
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+
+                </div>
+
+                <div class="card-heading">
+                    <h3>Goal Domain Breakdown</h3>
+
+                    <p>
+                        What people are actually trying to achieve.
+                    </p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg1.jpg"
+                        alt="Goal Domain Breakdown"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="obstacles"
+                data-title="Point of Abandonment"
+                data-index="2"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">02</span>
+
+                    <span class="card-category obstacles">
+                        Obstacles
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Point of Abandonment</h3>
+                    <p>Where momentum begins to disappear.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg2.jpg"
+                        alt="Point of Abandonment"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="psychology"
+                data-title="Goal Importance Rating"
+                data-index="3"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">03</span>
+
+                    <span class="card-category psychology">
+                        Psychology
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Goal Importance Rating</h3>
+                    <p>How important goals feel before execution.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg3.jpg"
+                        alt="Goal Importance Rating"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="accountability"
+                data-title="Accountability Support Groups"
+                data-index="4"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">04</span>
+
+                    <span class="card-category accountability">
+                        Accountability
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Accountability Support Groups</h3>
+                    <p>Who people turn to when consistency matters.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg4.jpg"
+                        alt="Accountability Support Groups"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="accountability"
+                data-title="Impact of Social Oversight"
+                data-index="5"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">05</span>
+
+                    <span class="card-category accountability">
+                        Accountability
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Impact of Social Oversight</h3>
+                    <p>Does being observed change behavior?</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg5.jpg"
+                        alt="Impact of Social Oversight"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+
+            <article
+                class="chart-card span-2 reveal"
+                data-category="psychology"
+                data-title="Primary Goal Categories"
+                data-index="6"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">06</span>
+
+                    <span class="card-category psychology">
+                        Psychology
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Primary Goal Categories</h3>
+                    <p>The domains where respondents want change.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg6.jpg"
+                        alt="Primary Goal Categories"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 07 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="demographics"
+                data-title="Occupation Distribution"
+                data-index="7"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">07</span>
+
+                    <span class="card-category demographics">
+                        Demographics
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Occupation Distribution</h3>
+                    <p>Who participated in the research?</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg7.jpg"
+                        alt="Occupation Distribution"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 08 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="demographics"
+                data-title="Age Group Spread"
+                data-index="8"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">08</span>
+
+                    <span class="card-category demographics">
+                        Demographics
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Age Group Spread</h3>
+                    <p>The age profile of the respondent pool.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg8.jpg"
+                        alt="Age Group Spread"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 09 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="psychology"
+                data-title="Initial Confidence Scale"
+                data-index="9"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">09</span>
+
+                    <span class="card-category psychology">
+                        Psychology
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Initial Confidence Scale</h3>
+                    <p>Confidence at the moment a goal begins.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg9.jpg"
+                        alt="Initial Confidence Scale"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 10 -->
+
+            <article
+                class="chart-card span-2 reveal"
+                data-category="psychology"
+                data-title="Actual Goal Completion Outcomes"
+                data-index="10"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">10</span>
+
+                    <span class="card-category psychology">
+                        Psychology
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Actual Goal Completion Outcomes</h3>
+                    <p>The gap between intention and execution.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg10.jpg"
+                        alt="Actual Goal Completion Outcomes"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 11 -->
+
+            <article
+                class="chart-card span-2 span-row-2 reveal"
+                data-category="obstacles"
+                data-title="Root Causes of Stoppage and Delay"
+                data-index="11"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">11</span>
+
+                    <span class="card-category obstacles">
+                        Obstacles
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Root Causes of Stoppage &amp; Delay</h3>
+                    <p>Why progress breaks down after the initial push.</p>
+                </div>
+
+                <div class="chart-image-wrapper tall-chart">
+                    <img
+                        src="./kenimg11.jpg"
+                        alt="Root Causes of Stoppage and Delay"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 12 -->
+
+            <article
+                class="chart-card span-2 reveal"
+                data-category="accountability"
+                data-title="Commitment and Penalty Preferences"
+                data-index="12"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">12</span>
+
+                    <span class="card-category accountability">
+                        Accountability
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Commitment &amp; Penalty Preferences</h3>
+                    <p>What kind of consequence feels motivating?</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg12.jpg"
+                        alt="Commitment and Penalty Preferences"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 13 -->
+
+            <article
+                class="chart-card reveal"
+                data-category="accountability"
+                data-title="Motivation Preference Structure"
+                data-index="13"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">13</span>
+
+                    <span class="card-category accountability">
+                        Accountability
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Motivation Preference Structure</h3>
+                    <p>What actually creates motivational pressure?</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg13.jpg"
+                        alt="Motivation Preference Structure"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 14 -->
+
+            <article
+                class="chart-card span-2 reveal"
+                data-category="obstacles"
+                data-title="Feared Consequences of Failure"
+                data-index="14"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">14</span>
+
+                    <span class="card-category obstacles">
+                        Obstacles
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>Feared Consequences of Failure</h3>
+                    <p>What people fear when they fail to follow through.</p>
+                </div>
+
+                <div class="chart-image-wrapper">
+                    <img
+                        src="./kenimg14.jpg"
+                        alt="Feared Consequences of Failure"
+                        class="chart-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 15 -->
+
+            <article
+                class="chart-card span-2 infographic-card reveal"
+                data-category="obstacles"
+                data-title="What People Do Instead"
+                data-index="15"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">15</span>
+
+                    <span class="card-category obstacles">
+                        Obstacles
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>What People Do Instead</h3>
+                    <p>Alternative behaviors that replace goal-directed action.</p>
+                </div>
+
+                <div class="chart-image-wrapper infographic-wrapper">
+                    <img
+                        src="./kenimg15.jpg"
+                        alt="What People Do Instead — Themes from the Survey"
+                        class="chart-image infographic-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 16 -->
+
+            <article
+                class="chart-card span-2 infographic-card reveal"
+                data-category="obstacles"
+                data-title="The Escape Routes"
+                data-index="16"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">16</span>
+
+                    <span class="card-category obstacles">
+                        Obstacles
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>The Escape Routes</h3>
+                    <p>How people psychologically escape difficult goals.</p>
+                </div>
+
+                <div class="chart-image-wrapper infographic-wrapper">
+                    <img
+                        src="./kenimg16.jpg"
+                        alt="The Escape Routes"
+                        class="chart-image infographic-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+
+            <!-- 18 -->
+
+            <article
+                class="chart-card span-2 infographic-card reveal"
+                data-category="obstacles"
+                data-title="What People Do Instead — Additional Findings"
+                data-index="18"
+                tabindex="0"
+            >
+
+                <div class="card-topline">
+                    <span class="card-number">18</span>
+
+                    <span class="card-category obstacles">
+                        Obstacles
+                    </span>
+
+                    <span class="card-arrow">↗</span>
+                </div>
+
+                <div class="card-heading">
+                    <h3>What People Do Instead</h3>
+                    <p>Additional behavioral themes from the research.</p>
+                </div>
+
+                <div class="chart-image-wrapper infographic-wrapper">
+                    <img
+                        src="./kenimg18.jpg"
+                        alt="What People Do Instead"
+                        class="chart-image infographic-image"
+                        loading="lazy"
+                    >
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =================================================
+             NO RESULTS
+        ================================================== -->
+
+        <div id="no-results" class="no-results">
+
+            <div class="no-results-icon">
+                ∅
+            </div>
+
+            <h3>No visualizations found</h3>
+
+            <p>
+                Try another keyword or reset the filters.
+            </p>
+
+            <button id="clear-search" type="button">
+                Clear search
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             INSIGHT STRIP
+        ================================================== -->
+
+        <section class="insight-strip reveal">
+
+            <div class="insight-label">
+                <span class="insight-pulse"></span>
+                RESEARCH LENS
+            </div>
+
+            <div class="insight-text">
+                <strong>Intention is not the bottleneck.</strong>
+                The behavioral gap appears between motivation,
+                friction, and accountability.
+            </div>
+
+            <div class="insight-mark">
+                03
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <div class="footer-brand">
+                <span class="footer-mark">K</span>
+
+                <div>
+                    <strong>KEN CASE COMPETITION 2026</strong>
+                    <span>Sticking to the Goal</span>
+                </div>
+            </div>
+
+            <div class="footer-center">
+                USER BEHAVIORAL RESEARCH
+                <span>•</span>
+                73 PARTICIPANTS
+            </div>
+
+            <div class="footer-right">
+                <span>DATA EXPLORATION</span>
+                <span class="footer-line"></span>
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         LIGHTBOX
+    ====================================================== -->
+
+    <div
+        id="lightbox"
+        class="lightbox"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Visualization viewer"
+    >
+
+        <div class="lightbox-backdrop"></div>
+
+        <div class="lightbox-panel">
+
+            <div class="lightbox-top">
+
+                <div>
+                    <span id="lightbox-category" class="lightbox-category">
+                        Psychology
+                    </span>
+
+                    <h2 id="lightbox-caption">
+                        Visualization
+                    </h2>
+                </div>
+
+                <button
+                    id="lightbox-close"
+                    class="lightbox-close"
+                    type="button"
+                    aria-label="Close visualization"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="lightbox-image-container">
+
+                <button
+                    id="lightbox-prev"
+                    class="lightbox-nav prev"
+                    type="button"
+                    aria-label="Previous visualization"
+                >
+                    ‹
+                </button>
+
+                <img
+                    id="lightbox-img"
+                    class="lightbox-content"
+                    src=""
+                    alt=""
+                >
+
+                <button
+                    id="lightbox-next"
+                    class="lightbox-nav next"
+                    type="button"
+                    aria-label="Next visualization"
+                >
+                    ›
+                </button>
+
+            </div>
+
+
+            <div class="lightbox-bottom">
+
+                <div class="lightbox-position">
+                    <span id="lightbox-current">01</span>
+                    <span>/</span>
+                    <span id="lightbox-total">17</span>
+                </div>
+
+                <div class="lightbox-actions">
+
+                    <button id="copy-title" type="button">
+                        Copy title
+                    </button>
+
+                    <a
+                        id="download-image"
+                        class="download-button"
+                        href="#"
+                        download
+                    >
+                        Download
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BACK TO TOP
+    ====================================================== -->
+
+    <button
+        id="back-to-top"
+        class="back-to-top"
+        type="button"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+    <!-- =====================================================
+         SCRIPT
+    ====================================================== -->
+
     <script src="./script.js"></script>
+
 </body>
 
 </html>
