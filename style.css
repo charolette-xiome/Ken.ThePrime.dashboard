@@ -458,30 +458,6 @@ body {
     transform: scale(1.02) !important;
 }
 
-/* =========================================================
-   CUSTOM SIZING FOR KENIMG 18
-   ========================================================= */
-.card-18 {
-    height: auto !important;
-}
-
-.wrapper-18 {
-    padding: 16px !important;
-    overflow: hidden;
-}
-
-.image-18 {
-    max-height: 525px !important;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    transform: scale(1.0) !important;
-}
-
-.card-18:hover .image-18 {
-    transform: scale(1.02) !important;
-}
-
 .image-error {
     border: 1px dashed #ef4444;
     min-height: 200px;
