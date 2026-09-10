@@ -6,8 +6,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================================================
-       HTML ELEMENTS
-       ========================================================= */
+       ELEMENTS
+    ========================================================= */
 
     const chartGrid = document.getElementById("chart-grid");
 
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================================
-       LIGHTBOX ELEMENTS
-       ========================================================= */
+       LIGHTBOX
+    ========================================================= */
 
     const lightbox =
         document.getElementById("lightbox");
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================================
-       ZOOM STATE
-       ========================================================= */
+       ZOOM SETTINGS
+    ========================================================= */
 
     let currentZoom = 1;
 
@@ -51,10 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const minimumZoom = 0.6;
     const maximumZoom = 1.4;
 
-
-    /* =========================================================
-       ZOOM SYSTEM
-       ========================================================= */
 
     function updateZoom() {
 
@@ -77,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             updateZoom();
         }
+
     });
 
 
@@ -91,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             updateZoom();
         }
+
     });
 
 
@@ -99,12 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
         currentZoom = 1;
 
         updateZoom();
+
     });
+
 
 
     /* =========================================================
        CATEGORY FILTERING
-       ========================================================= */
+    ========================================================= */
 
     filterButtons.forEach(button => {
 
@@ -136,15 +136,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
 
                     card.classList.add("is-hidden");
+
                 }
+
             });
+
         });
+
     });
 
 
+
     /* =========================================================
-       LIGHTBOX EXPANSION
-       ========================================================= */
+       LIGHTBOX
+    ========================================================= */
 
     chartCards.forEach(card => {
 
@@ -155,36 +160,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const title =
                 this.querySelector(".chart-title")
-                    .textContent;
+                    .textContent
+                    .trim();
 
 
-            if (img && img.src) {
-
-                lightboxImg.src = img.src;
-
-                lightboxImg.alt =
-                    img.alt || title;
-
-                lightboxCaption.textContent =
-                    title;
-
-                lightbox.classList.add("active");
-
-                document.body.style.overflow = "hidden";
+            if (!img) {
+                return;
             }
+
+
+            /*
+             * Do not open the lightbox if the image
+             * itself failed to load.
+             */
+
+            if (!img.complete || img.naturalWidth === 0) {
+
+                console.warn(
+                    "Image could not be loaded:",
+                    img.src
+                );
+
+                return;
+            }
+
+
+            lightboxImg.src = img.src;
+
+            lightboxImg.alt =
+                img.alt || title;
+
+            lightboxCaption.textContent =
+                title;
+
+            lightbox.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
         });
+
     });
+
 
 
     /* =========================================================
        CLOSE LIGHTBOX
-       ========================================================= */
+    ========================================================= */
 
     function closeLightbox() {
 
         lightbox.classList.remove("active");
 
+        lightboxImg.src = "";
+
         document.body.style.overflow = "";
+
     }
 
 
@@ -199,15 +229,19 @@ document.addEventListener("DOMContentLoaded", function () {
         function (event) {
 
             if (event.target === lightbox) {
+
                 closeLightbox();
+
             }
+
         }
     );
 
 
+
     /* =========================================================
-       ESC KEY — CLOSE LIGHTBOX
-       ========================================================= */
+       ESCAPE KEY
+    ========================================================= */
 
     document.addEventListener(
         "keydown",
@@ -217,15 +251,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.key === "Escape" &&
                 lightbox.classList.contains("active")
             ) {
+
                 closeLightbox();
+
             }
+
         }
     );
 
 
+
     /* =========================================================
-       IMAGE ERROR HANDLING
-       ========================================================= */
+       IMAGE DEBUGGING
+    ========================================================= */
 
     const images =
         document.querySelectorAll(".chart-image");
@@ -238,48 +276,41 @@ document.addEventListener("DOMContentLoaded", function () {
             function () {
 
                 console.error(
-                    "Could not load image:",
-                    image.src
+                    "IMAGE FAILED TO LOAD:",
+                    image.getAttribute("src")
                 );
 
+                /*
+                 * Keep the broken image visible in DevTools
+                 * instead of replacing it with a fake
+                 * "Visualization unavailable" message.
+                 */
 
-                const parent =
-                    image.parentElement;
+                image.classList.add("image-error");
 
-
-                image.style.display = "none";
-
-
-                const errorBox =
-                    document.createElement("div");
-
-
-                errorBox.textContent =
-                    "Visualization unavailable";
-
-
-                errorBox.style.padding =
-                    "30px";
-
-                errorBox.style.textAlign =
-                    "center";
-
-                errorBox.style.color =
-                    "#9ca3af";
-
-                errorBox.style.fontSize =
-                    "13px";
-
-
-                parent.appendChild(errorBox);
             }
         );
+
+
+        image.addEventListener(
+            "load",
+            function () {
+
+                console.log(
+                    "IMAGE LOADED:",
+                    image.getAttribute("src")
+                );
+
+            }
+        );
+
     });
+
 
 
     /* =========================================================
        INITIALIZE
-       ========================================================= */
+    ========================================================= */
 
     updateZoom();
 
