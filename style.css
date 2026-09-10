@@ -52,7 +52,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Custom Scrollbar for a premium feel */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -292,16 +292,16 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     padding: 6px;
     border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .control-button,
 .reset-button {
     height: 36px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: var(--surface-card);
     color: var(--text-primary);
     border-radius: 8px;
@@ -391,7 +391,7 @@ body {
 .card-header {
     padding: 24px 28px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
 }
 
 .card-category {
@@ -435,23 +435,27 @@ body {
 }
 
 /* =========================================================
-   FIX FOR INFOGRAPHIC CARDS (Images 15, 16, 17)
+   FIX FOR INFOGRAPHIC CARDS (Images 15, 16, 18)
    ========================================================= */
 .infographic-wrapper {
-    padding: 0 !important; /* Removes the 30px padding causing the gap */
-    background: transparent !important;
+    padding: 24px !important;
+    background: rgba(0, 0, 0, 0.25) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .infographic-image {
-    max-height: none !important; /* Prevents the image from being squished */
+    max-height: 420px !important;
     width: 100%;
-    display: block;
-    border-radius: 0 0 var(--radius-card) var(--radius-card) !important;
-    transform: none !important; /* Disable hover scale to keep edges clean */
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px !important;
+    transition: transform 0.3s ease !important;
 }
 
 .chart-card:hover .infographic-image {
-    transform: none !important; 
+    transform: scale(1.02) !important;
 }
 
 .image-error {
@@ -572,7 +576,7 @@ body {
 
 @media (max-width: 768px) {
     .dashboard-controls {
-        position: relative; /* Remove sticky on mobile to save screen space */
+        position: relative;
         top: 0;
         flex-direction: column;
         align-items: flex-start;
